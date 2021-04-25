@@ -1,0 +1,15 @@
+// media query
+$largescreen: "screen and (min-width: 1920px)";
+$mq5b: "screen and (max-width: 565px)";
+$mq7b: "screen and (max-width: 767px)";
+$mq9b: "screen and (max-width: 991px)";
+$mq12b: "screen and (max-width: 1199px)";
+$mq5a: "screen and (min-width: 566px)";
+$mq7a: "screen and (min-width: 768px)";
+$mq9a: "screen and (min-width: 992px)";
+$mq12a: "screen and (min-width: 1200px)";
+$fhd: "screen and (max-width: 1920px)";
+//variables ends here
+// @media only screen and (min-width: 1024px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) and (hover: none) {
+//     /* ... */
+// }
