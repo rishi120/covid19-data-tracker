@@ -1,0 +1,16 @@
+.landing-section {
+    height: 100vh;
+    background-color: $yellow;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    h1 {
+        font: 40px $roboto;
+    }
+    p {
+        font: 20px $roboto;
+    }
+    img {
+        width: 50px;
+    }
+}
