@@ -14,3 +14,22 @@
         width: 50px;
     }
 }
+
+.image-grid {
+    height: 100vh;
+    background-color: $teal;
+    display: flex;
+    align-items: center;
+    .img-wrapper {
+        overflow: hidden;
+        img {
+            height: 400px;
+            @include border-radius(5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+            @include transition(0.3s ease);
+            &:hover {
+                transform: scale(1.08);
+            }
+        }
+    }
+}
