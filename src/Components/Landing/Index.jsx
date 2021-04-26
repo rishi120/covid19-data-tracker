@@ -13,10 +13,19 @@ const Renderlandingsection = (props) => {
       "#paraAnimation",
       "#imgAnimation",
     ];
+    const custom = ".custom";
     gsapTimeline.from(elementSelectors, {
       y: -100,
       opacity: 0,
       ease: Power2.easeInOut,
+      duration: 0.5,
+      delay: 0.5,
+      stagger: 0.1,
+    });
+    gsapTimeline.from(custom, {
+      y: -100,
+      opacity: 0,
+      // ease: Power2.easeInOut,
       duration: 0.5,
       delay: 0.5,
       stagger: 0.1,
@@ -26,33 +35,19 @@ const Renderlandingsection = (props) => {
     <section className="landing-section panel">
       <div className="wrap-section">
         <Container>
-          <h1 id="headingAnimation">Covid 19 Guwahati Stats</h1>
+          <h1 id="headingAnimation">Covid 19 Guwahati Updates</h1>
           <div className="grid-center">
             <Row>
-              <Col md={3}>
-                <div className="grid-wrapper">
-                  <p>Total</p>
-                  <h1 className="confirmed">{props.getCovidData.confirmed}</h1>
-                </div>
-              </Col>
-              <Col md={3}>
-                <div className="grid-wrapper">
-                  <p>Active</p>
-                  <h1 className="active">{props.getCovidData.active}</h1>
-                </div>
-              </Col>
-              <Col md={3}>
-                <div className="grid-wrapper">
-                  <p>Recovered</p>
-                  <h1 className="recovered">{props.getCovidData.recovered}</h1>
-                </div>
-              </Col>
-              <Col md={3}>
-                <div className="grid-wrapper">
-                  <p>Deaths</p>
-                  <h1 className="deceased">{props.getCovidData.deceased}</h1>
-                </div>
-              </Col>
+              {props.Rendercoviddata.map((getCases) => {
+                return (
+                  <Col md={3} key={getCases.heading} className="custom">
+                    <div className="grid-wrapper">
+                      <p>{getCases.heading}</p>
+                      <h1>{getCases.getData}</h1>
+                    </div>
+                  </Col>
+                );
+              })}
             </Row>
           </div>
 

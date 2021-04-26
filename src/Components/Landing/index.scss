@@ -26,17 +26,35 @@
                 h1 {
                     padding-top: 0;
                 }
-                .confirmed {
-                    color: #bf591d;
+            }
+            .custom {
+                &:nth-of-type(1) {
+                    .grid-wrapper {
+                        h1 {
+                            color: #bf591d;
+                        }
+                    }
                 }
-                .active {
-                    color: #7651ba;
+                &:nth-of-type(2) {
+                    .grid-wrapper {
+                        h1 {
+                            color: #7651ba;
+                        }
+                    }
                 }
-                .recovered {
-                    color: #2146ad;
+                &:nth-of-type(3) {
+                    .grid-wrapper {
+                        h1 {
+                            color: #2146ad;
+                        }
+                    }
                 }
-                .deceased {
-                    color: #9c3250;
+                &:nth-of-type(4) {
+                    .grid-wrapper {
+                        h1 {
+                            color: #9c3250;
+                        }
+                    }
                 }
             }
         }

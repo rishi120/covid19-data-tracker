@@ -9,12 +9,36 @@ import Axios from "axios";
 
 const Rendermastercomponent = () => {
   const [getCovidData, setGetCovidData] = useState([]);
+  const getTotal = getCovidData.active;
+  const getActive = getCovidData.confirmed;
+  const getRecovered = getCovidData.recovered;
+  const getDeceased = getCovidData.deceased;
+  const Rendercoviddata = [
+    {
+      heading: "Total",
+      getData: getTotal,
+    },
+    {
+      heading: "Active",
+      getData: getActive,
+    },
+    {
+      heading: "Recovered",
+      getData: getRecovered,
+    },
+    {
+      heading: "Deaths",
+      getData: getDeceased,
+    },
+  ];
   gsap.registerPlugin(ScrollTrigger);
+
   useEffect(() => {
     Axios.get("https://api.covid19india.org/state_district_wise.json")
       .then((response) => {
-        console.log(response.data.Assam.districtData.Kamrup);
-        setGetCovidData(response.data.Assam.districtData.Kamrup);
+        setGetCovidData(
+          response.data.Assam.districtData["Kamrup Metropolitan"]
+        );
       })
       .catch(function () {
         console.log("error");
@@ -43,7 +67,11 @@ const Rendermastercomponent = () => {
 
   return (
     <>
-      <Renderlandingsection Scrollgif={Scrollgif} getCovidData={getCovidData} />
+      <Renderlandingsection
+        Scrollgif={Scrollgif}
+        getCovidData={getCovidData}
+        Rendercoviddata={Rendercoviddata}
+      />
       <Renderimagegrid />
       <Renderthirdsection />
     </>
