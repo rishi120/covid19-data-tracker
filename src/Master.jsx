@@ -1,16 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Renderlandingsection from "./Components/Landing/Index";
 import Scrollgif from "./assets/images/scroll-down.gif";
 import Renderimagegrid from "./Components/Landing/Image-grid";
 import gsap, { Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Renderthirdsection from "./Components/Landing/Third-section";
+import Axios from "axios";
 
 const Rendermastercomponent = () => {
+  const [getCovidData, setGetCovidData] = useState([]);
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
+    Axios.get("https://api.covid19india.org/state_district_wise.json")
+      .then((response) => {
+        console.log(response.data.Assam.districtData.Kamrup);
+        setGetCovidData(response.data.Assam.districtData.Kamrup);
+      })
+      .catch(function () {
+        console.log("error");
+      });
     const ST = ScrollTrigger;
     const targetPanels = ".panel";
-    console.log(targetPanels);
     /* using the gsap utils menthod to loop through each of the sections and apply the layered pinning animation */
     gsap.utils.toArray(targetPanels).map((panel) => {
       ST.create({
@@ -30,10 +40,12 @@ const Rendermastercomponent = () => {
       });
     });
   }, []);
+
   return (
     <>
-      <Renderlandingsection Scrollgif={Scrollgif} />
+      <Renderlandingsection Scrollgif={Scrollgif} getCovidData={getCovidData} />
       <Renderimagegrid />
+      <Renderthirdsection />
     </>
   );
 };

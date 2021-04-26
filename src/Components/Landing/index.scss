@@ -1,17 +1,51 @@
 .landing-section {
     height: 100vh;
     background-color: $yellow;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    h1 {
-        font: 40px $roboto;
-    }
-    p {
-        font: 20px $roboto;
-    }
-    img {
-        width: 50px;
+    .wrap-section {
+        position: relative;
+        // display: flex;
+        // align-items: center;
+        // text-align: center;
+        width: 100%;
+        height: 100vh;
+        h1 {
+            padding-top: 50px;
+            color: $font-black;
+            font: 40px $roboto;
+        }
+        .grid-center {
+            padding-top: 100px;
+            .grid-wrapper {
+                padding: 10px;
+                background-color: $font-black;
+                @include border-radius(5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+                p {
+                    color: $font-white;
+                }
+                h1 {
+                    padding-top: 0;
+                }
+                .confirmed {
+                    color: #bf591d;
+                }
+                .active {
+                    color: #7651ba;
+                }
+                .recovered {
+                    color: #2146ad;
+                }
+                .deceased {
+                    color: #9c3250;
+                }
+            }
+        }
+        img {
+            width: 50px;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+        }
     }
 }
 
@@ -21,11 +55,25 @@
     display: flex;
     align-items: center;
     .img-wrapper {
-        overflow: hidden;
         img {
             height: 400px;
             @include border-radius(5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
         }
+    }
+}
+
+.third-section {
+    @extend .landing-section;
+    display: flex;
+    align-items: center;
+    background-color: $black-gradient !important;
+    h1 {
+        font-size: 200px !important;
+        height: 200px;
+        color: $font-white !important;
+    }
+    p {
+        color: $font-white !important;
     }
 }

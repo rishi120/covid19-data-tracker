@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import gsap, { Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -12,7 +14,7 @@ const Renderlandingsection = (props) => {
       "#imgAnimation",
     ];
     gsapTimeline.from(elementSelectors, {
-      y: 100,
+      y: -100,
       opacity: 0,
       ease: Power2.easeInOut,
       duration: 0.5,
@@ -22,11 +24,41 @@ const Renderlandingsection = (props) => {
   }, []);
   return (
     <section className="landing-section panel">
-      <Container>
-        <h1 id="headingAnimation">Welcome to Gsap Layered Pinning</h1>
-        <p id="paraAnimation">Scroll down to see the effect</p>
-        <img src={props.Scrollgif} alt="Scroll Down" id="imgAnimation" />
-      </Container>
+      <div className="wrap-section">
+        <Container>
+          <h1 id="headingAnimation">Covid 19 Guwahati Stats</h1>
+          <div className="grid-center">
+            <Row>
+              <Col md={3}>
+                <div className="grid-wrapper">
+                  <p>Total</p>
+                  <h1 className="confirmed">{props.getCovidData.confirmed}</h1>
+                </div>
+              </Col>
+              <Col md={3}>
+                <div className="grid-wrapper">
+                  <p>Active</p>
+                  <h1 className="active">{props.getCovidData.active}</h1>
+                </div>
+              </Col>
+              <Col md={3}>
+                <div className="grid-wrapper">
+                  <p>Recovered</p>
+                  <h1 className="recovered">{props.getCovidData.recovered}</h1>
+                </div>
+              </Col>
+              <Col md={3}>
+                <div className="grid-wrapper">
+                  <p>Deaths</p>
+                  <h1 className="deceased">{props.getCovidData.deceased}</h1>
+                </div>
+              </Col>
+            </Row>
+          </div>
+
+          <img src={props.Scrollgif} alt="Scroll Down" id="imgAnimation" />
+        </Container>
+      </div>
     </section>
   );
 };
