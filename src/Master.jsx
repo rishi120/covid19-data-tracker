@@ -9,8 +9,8 @@ import Axios from "axios";
 
 const Rendermastercomponent = () => {
   const [getCovidData, setGetCovidData] = useState([]);
-  const getTotal = getCovidData.active;
-  const getActive = getCovidData.confirmed;
+  const getTotal = getCovidData.confirmed;
+  const getActive = getCovidData.active;
   const getRecovered = getCovidData.recovered;
   const getDeceased = getCovidData.deceased;
   const Rendercoviddata = [
@@ -69,7 +69,6 @@ const Rendermastercomponent = () => {
     <>
       <Renderlandingsection
         Scrollgif={Scrollgif}
-        getCovidData={getCovidData}
         Rendercoviddata={Rendercoviddata}
       />
       <Renderimagegrid />
