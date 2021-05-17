@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Renderlandingsection from "./Components/Landing/Index";
-// import Scrollgif from "./assets/images/scroll-down.gif";
 import Renderimagegrid from "./Components/Landing/Image-grid";
 import gsap, { Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -12,6 +11,7 @@ const Rendermastercomponent = () => {
   const [getCovidData, setGetCovidData] = useState([]);
   const [loading, setLoading] = useState();
   const [showError, setShowError] = useState(false);
+  const searchInput = useRef(null);
   const RenderTableHeading = [
     {
       tableHeading: "State/UT",
@@ -36,6 +36,9 @@ const Rendermastercomponent = () => {
 
   useEffect(() => {
     setLoading(true);
+    setTimeout(() => {
+      searchInput.current.focus();
+    }, 300);
     Axios.get(baseUrl + "data.json")
       .then((response) => {
         setGetCovidData(response.data.statewise);
@@ -73,6 +76,7 @@ const Rendermastercomponent = () => {
         getCovidData={getCovidData}
         loading={loading}
         showError={showError}
+        searchInput={searchInput}
       />
       <Renderimagegrid />
       <Renderthirdsection />

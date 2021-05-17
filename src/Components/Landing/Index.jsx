@@ -37,6 +37,14 @@ const Renderlandingsection = (props) => {
     <section className="landing-section panel">
       <div className="wrap-section">
         <Container className="no-pad">
+          <Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Search your State..."
+              className="custom-search-input"
+              ref={props.searchInput}
+            />
+          </Form.Group>
           <div className="table-wrapper">
             <Table responsive hover className="custom-table">
               <thead>

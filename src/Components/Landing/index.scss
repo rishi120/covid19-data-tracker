@@ -1,6 +1,17 @@
 .landing-section {
     height: 100vh !important;
     background-color: #072534;
+    .form-group {
+        margin-bottom: 0 !important;
+        .custom-search-input {
+            border-radius: 0;
+            border: 0;
+            font: 15px $roboto;
+            &::placeholder {
+                font: 15px $roboto;
+            }
+        }
+    }
     .wrap-section {
         position: relative;
         display: flex;
