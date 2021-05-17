@@ -1,74 +1,74 @@
 .landing-section {
-    height: 100vh;
-    // background-color: $yellow;
+    height: 100vh !important;
+    background-color: #072534;
     .wrap-section {
         position: relative;
-        // display: flex;
-        // align-items: center;
-        // text-align: center;
+        display: flex;
+        align-items: center;
         width: 100%;
         height: 100vh;
-        h1 {
-            padding-top: 50px;
-            color: $font-black;
-            font: 40px $roboto;
-        }
-        .grid-center {
-            padding-top: 100px;
-            .grid-wrapper {
-                padding: 10px;
-                background-color: #121212;
-                @include border-radius(5px);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-                p {
-                    color: $font-white;
+        .table-wrapper {
+            border: 1px solid #fff;
+            height: 400px;
+            overflow-y: auto;
+            .custom-table {
+                thead {
+                    tr {
+                        th {
+                            font: 15px $roboto;
+                            color: $font-white;
+                            &:nth-child(2) {
+                                color: #dc3545;
+                            }
+                            &:nth-child(3) {
+                                color: #007bff;
+                            }
+                            &:nth-child(4) {
+                                color: #28a745;
+                            }
+                            &:nth-child(5) {
+                                color: #6c757d;
+                            }
+                            &:nth-child(6) {
+                                color: #ffc107;
+                            }
+                        }
+                    }
                 }
-                h1 {
-                    padding-top: 0;
+                tbody {
+                    tr {
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                        td {
+                            font: 15px $roboto;
+                            color: $font-white;
+                            border: 0;
+                            &:nth-child(2) {
+                                color: #dc3545;
+                            }
+                            &:nth-child(3) {
+                                color: #007bff;
+                            }
+                            &:nth-child(4) {
+                                color: #28a745;
+                            }
+                            &:nth-child(5) {
+                                color: #6c757d;
+                            }
+                            &:nth-child(6) {
+                                color: #ffc107;
+                            }
+                        }
+                    }
                 }
             }
-            .custom {
-                &:nth-of-type(1) {
-                    .grid-wrapper {
-                        h1 {
-                            color: #bf591d;
-                        }
-                    }
-                }
-                &:nth-of-type(2) {
-                    .grid-wrapper {
-                        h1 {
-                            color: #7651ba;
-                        }
-                    }
-                }
-                &:nth-of-type(3) {
-                    .grid-wrapper {
-                        h1 {
-                            color: #2146ad;
-                        }
-                    }
-                }
-                &:nth-of-type(4) {
-                    .grid-wrapper {
-                        h1 {
-                            color: #9c3250;
-                        }
-                    }
-                }
-            }
-        }
-        img {
-            width: 50px;
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
         }
     }
 }
 
 .image-grid {
-    height: 100vh;
+    height: 100vh !important;
     background-color: $teal;
     display: flex;
     align-items: center;

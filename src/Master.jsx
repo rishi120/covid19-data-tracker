@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from "react";
 import Renderlandingsection from "./Components/Landing/Index";
-import Scrollgif from "./assets/images/scroll-down.gif";
+// import Scrollgif from "./assets/images/scroll-down.gif";
 import Renderimagegrid from "./Components/Landing/Image-grid";
 import gsap, { Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Renderthirdsection from "./Components/Landing/Third-section";
 import Axios from "axios";
+import { baseUrl } from "./Components/Landing/Utils/Baseurl";
 
 const Rendermastercomponent = () => {
   const [getCovidData, setGetCovidData] = useState([]);
-  const getTotal = getCovidData.confirmed;
-  const getActive = getCovidData.active;
-  const getRecovered = getCovidData.recovered;
-  const getDeceased = getCovidData.deceased;
-  const Rendercoviddata = [
+  const [loading, setLoading] = useState();
+  const [showError, setShowError] = useState(false);
+  const RenderTableHeading = [
     {
-      heading: "Total",
-      getData: getTotal,
+      tableHeading: "State/UT",
     },
     {
-      heading: "Active",
-      getData: getActive,
+      tableHeading: "Confirmed",
     },
     {
-      heading: "Recovered",
-      getData: getRecovered,
+      tableHeading: "Active",
     },
     {
-      heading: "Deaths",
-      getData: getDeceased,
+      tableHeading: "Recovered",
+    },
+    {
+      tableHeading: "Deceased",
+    },
+    {
+      tableHeading: "Last Updated Time",
     },
   ];
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    Axios.get("https://api.covid19india.org/state_district_wise.json")
+    setLoading(true);
+    Axios.get(baseUrl + "data.json")
       .then((response) => {
-        setGetCovidData(
-          response.data.Assam.districtData["Kamrup Metropolitan"]
-        );
+        setGetCovidData(response.data.statewise);
+        setLoading(false);
       })
       .catch(function () {
         console.log("error");
@@ -68,8 +69,10 @@ const Rendermastercomponent = () => {
   return (
     <>
       <Renderlandingsection
-        Scrollgif={Scrollgif}
-        Rendercoviddata={Rendercoviddata}
+        RenderTableHeading={RenderTableHeading}
+        getCovidData={getCovidData}
+        loading={loading}
+        showError={showError}
       />
       <Renderimagegrid />
       <Renderthirdsection />

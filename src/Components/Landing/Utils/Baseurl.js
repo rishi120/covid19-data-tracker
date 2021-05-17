@@ -1,0 +1,1 @@
+export const baseUrl = "https://api.covid19india.org/";

@@ -1913,6 +1913,11 @@
   dependencies:
     "source-map" "^0.6.1"
 
+"@types/uuid@8.3.0":
+  "integrity" "sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ=="
+  "resolved" "https://registry.npmjs.org/@types/uuid/-/uuid-8.3.0.tgz"
+  "version" "8.3.0"
+
 "@types/warning@^3.0.0":
   "integrity" "sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI="
   "resolved" "https://registry.npmjs.org/@types/warning/-/warning-3.0.0.tgz"
@@ -11779,6 +11784,19 @@
   "integrity" "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
   "resolved" "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz"
   "version" "8.3.2"
+
+"uuid@8.3.2":
+  "integrity" "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
+  "version" "8.3.2"
+
+"uuidv4@^6.2.8":
+  "integrity" "sha512-GX4W6FXHa3N4p8FQGrus/snwYr8zYpbiXL5rJk92jogj3cn93F02VnTHZd6MOW83CYNSMLmCvLuWy9qEB5EABw=="
+  "resolved" "https://registry.npmjs.org/uuidv4/-/uuidv4-6.2.8.tgz"
+  "version" "6.2.8"
+  dependencies:
+    "@types/uuid" "8.3.0"
+    "uuid" "8.3.2"
 
 "v8-compile-cache@^2.0.3":
   "integrity" "sha512-gTpR5XQNKFwOd4clxfnhaqvfqMpqEwr4tOtCyz4MtYZX2JYhfr1JvBFKdS+7K/9rfpZR3VLX+YWBbKoxCgS43Q=="

@@ -4,6 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import gsap, { Power2 } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Form from "react-bootstrap/Form";
+import Table from "react-bootstrap/Table";
+import { v4 as uuidv4 } from "uuid";
 
 const Renderlandingsection = (props) => {
   useEffect(() => {
@@ -15,7 +18,7 @@ const Renderlandingsection = (props) => {
     ];
     const custom = ".custom";
     gsapTimeline.from(elementSelectors, {
-      y: -100,
+      y: -50,
       opacity: 0,
       ease: Power2.easeInOut,
       duration: 0.5,
@@ -25,7 +28,6 @@ const Renderlandingsection = (props) => {
     gsapTimeline.from(custom, {
       y: -100,
       opacity: 0,
-      // ease: Power2.easeInOut,
       duration: 0.5,
       delay: 0.5,
       stagger: 0.1,
@@ -34,24 +36,46 @@ const Renderlandingsection = (props) => {
   return (
     <section className="landing-section panel">
       <div className="wrap-section">
-        <Container>
-          <h1 id="headingAnimation">Covid 19 Guwahati Updates</h1>
-          <div className="grid-center">
-            <Row>
-              {props.Rendercoviddata.map((getCases) => {
-                return (
-                  <Col md={3} key={getCases.heading} className="custom">
-                    <div className="grid-wrapper">
-                      <p>{getCases.heading}</p>
-                      <h1>{getCases.getData}</h1>
-                    </div>
-                  </Col>
-                );
-              })}
-            </Row>
+        <Container className="no-pad">
+          <div className="table-wrapper">
+            <Table responsive hover className="custom-table">
+              <thead>
+                <tr>
+                  {props.RenderTableHeading.map((getTableHeaderData) => {
+                    return (
+                      <th key={uuidv4()}>{getTableHeaderData.tableHeading}</th>
+                    );
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {props.loading && (
+                  <tr>
+                    <td className="data-loader">Loading...</td>
+                  </tr>
+                )}
+                {props.showError && (
+                  <tr>
+                    <td className="data-loader" style={{ color: "red" }}>
+                      Error fetching data. Please try again...
+                    </td>
+                  </tr>
+                )}
+                {props.getCovidData.map((getStateWiseData) => {
+                  return (
+                    <tr>
+                      <td key={uuidv4()}>{getStateWiseData.state}</td>
+                      <td key={uuidv4()}>{getStateWiseData.confirmed}</td>
+                      <td key={uuidv4()}>{getStateWiseData.active}</td>
+                      <td key={uuidv4()}>{getStateWiseData.recovered}</td>
+                      <td key={uuidv4()}>{getStateWiseData.deaths}</td>
+                      <td key={uuidv4()}>{getStateWiseData.lastupdatedtime}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </div>
-
-          <img src={props.Scrollgif} alt="Scroll Down" id="imgAnimation" />
         </Container>
       </div>
     </section>
