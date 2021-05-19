@@ -46,6 +46,8 @@ const Rendermastercomponent = () => {
       })
       .catch(function () {
         console.log("error");
+        setLoading(false);
+        setShowError(true);
       });
     const ST = ScrollTrigger;
     const targetPanels = ".panel";

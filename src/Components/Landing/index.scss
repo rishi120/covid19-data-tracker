@@ -51,6 +51,9 @@
                         &:last-child {
                             border-bottom: 0;
                         }
+                        &:hover {
+                            background-color: $font-black;
+                        }
                         td {
                             font: 15px $roboto;
                             color: $font-white;
@@ -73,6 +76,23 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+.modal {
+    z-index: 1299;
+    backdrop-filter: blur(10px);
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                .modal-title {
+                    font: 30px $roboto;
+                }
+            }
+            .modal-footer {
+                border-top: 1px dashed;
             }
         }
     }

@@ -1,40 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import gsap, { Power2 } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import { v4 as uuidv4 } from "uuid";
+import Rendermodal from "../Landing/Data-modal";
 
 const Renderlandingsection = (props) => {
-  useEffect(() => {
-    const gsapTimeline = gsap.timeline();
-    const elementSelectors = [
-      "#headingAnimation",
-      "#paraAnimation",
-      "#imgAnimation",
-    ];
-    const custom = ".custom";
-    gsapTimeline.from(elementSelectors, {
-      y: -50,
-      opacity: 0,
-      ease: Power2.easeInOut,
-      duration: 0.5,
-      delay: 0.5,
-      stagger: 0.1,
-    });
-    gsapTimeline.from(custom, {
-      y: -100,
-      opacity: 0,
-      duration: 0.5,
-      delay: 0.5,
-      stagger: 0.1,
-    });
-  }, []);
+  const [modal, setModal] = useState(false);
+  const [stateName, setStateName] = useState("");
+
+  const handleModal = (getTableData) => {
+    setStateName(getTableData);
+    setModal(true);
+  };
+  const handleClose = () => {
+    setModal(false);
+  };
   return (
     <section className="landing-section panel">
+      <Rendermodal
+        handleClose={handleClose}
+        modal={modal}
+        stateName={stateName}
+      />
       <div className="wrap-section">
         <Container className="no-pad">
           <Form.Group>
@@ -43,6 +31,7 @@ const Renderlandingsection = (props) => {
               placeholder="Search your State..."
               className="custom-search-input"
               ref={props.searchInput}
+              onChange={(e) => props.handleSearch(e.target.value)}
             />
           </Form.Group>
           <div className="table-wrapper">
@@ -71,8 +60,15 @@ const Renderlandingsection = (props) => {
                 )}
                 {props.getCovidData.map((getStateWiseData) => {
                   return (
-                    <tr>
-                      <td key={uuidv4()}>{getStateWiseData.state}</td>
+                    <tr
+                      onClick={() => handleModal(getStateWiseData.state)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {getStateWiseData.state == "Total" ? (
+                        <td key={uuidv4()}>India</td>
+                      ) : (
+                        <td key={uuidv4()}>{getStateWiseData.state}</td>
+                      )}
                       <td key={uuidv4()}>{getStateWiseData.confirmed}</td>
                       <td key={uuidv4()}>{getStateWiseData.active}</td>
                       <td key={uuidv4()}>{getStateWiseData.recovered}</td>
