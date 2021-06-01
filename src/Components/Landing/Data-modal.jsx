@@ -4,6 +4,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { v4 as uuidv4 } from "uuid";
+import Renderdata from "./Data";
+import Rendercoviddata from "./Covid-data";
 
 const Rendermodal = (props) => {
   return (
@@ -20,16 +24,33 @@ const Rendermodal = (props) => {
           <Modal.Title style={{ color: "#372d72" }}>India</Modal.Title>
         ) : (
           <Modal.Title style={{ color: "#372d72" }}>
-            {props.stateName}
+            {props.stateName} District Wise Data
           </Modal.Title>
         )}
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body>
+        <Form.Group>
+          <Form.Control type="text" value={props.stateName} disabled />
+        </Form.Group>
+        <Renderdata
+          stateName={props.stateName}
+          handleStateChange={props.handleStateChange}
+          Andhra={props.Andhra}
+          Arunachal={props.Arunachal}
+          Assam={props.Assam}
+          Bihar={props.Bihar}
+        />
+        <Rendercoviddata
+        // confirmed={props.confirmed}
+        // active={props.active}
+        // recovered={props.recovered}
+        // deceased={props.deceased}
+        />
+      </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.handleClose}>
-          Delete Task
+          Back
         </Button>
-        <Button variant="primary">Submit Task</Button>
       </Modal.Footer>
     </Modal>
   );

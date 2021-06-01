@@ -4,24 +4,25 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import { v4 as uuidv4 } from "uuid";
 import Rendermodal from "../Landing/Data-modal";
+import Moment from "moment";
 
 const Renderlandingsection = (props) => {
-  const [modal, setModal] = useState(false);
-  const [stateName, setStateName] = useState("");
-
-  const handleModal = (getTableData) => {
-    setStateName(getTableData);
-    setModal(true);
-  };
-  const handleClose = () => {
-    setModal(false);
-  };
   return (
     <section className="landing-section panel">
       <Rendermodal
-        handleClose={handleClose}
-        modal={modal}
-        stateName={stateName}
+        handleClose={props.handleClose}
+        modal={props.modal}
+        stateName={props.stateName}
+        showStateNames={props.showStateNames}
+        handleStateChange={props.handleStateChange}
+        Andhra={props.Andhra}
+        Arunachal={props.Arunachal}
+        Assam={props.Assam}
+        Bihar={props.Bihar}
+        // confirmed={props.confirmed}
+        // active={props.active}
+        // recovered={props.recovered}
+        // deceased={props.deceased}
       />
       <div className="wrap-section">
         <Container className="no-pad">
@@ -47,12 +48,12 @@ const Renderlandingsection = (props) => {
               </thead>
               <tbody>
                 {props.loading && (
-                  <tr>
+                  <tr style={{ display: "block" }}>
                     <td className="data-loader">Loading...</td>
                   </tr>
                 )}
                 {props.showError && (
-                  <tr>
+                  <tr style={{ display: "block" }}>
                     <td className="data-loader" style={{ color: "red" }}>
                       Error fetching data. Please try again...
                     </td>
@@ -61,8 +62,9 @@ const Renderlandingsection = (props) => {
                 {props.getCovidData.map((getStateWiseData) => {
                   return (
                     <tr
-                      onClick={() => handleModal(getStateWiseData.state)}
+                      onClick={() => props.handleModal(getStateWiseData.state)}
                       style={{ cursor: "pointer" }}
+                      key={uuidv4()}
                     >
                       {getStateWiseData.state == "Total" ? (
                         <td key={uuidv4()}>India</td>

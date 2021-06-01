@@ -48,6 +48,9 @@
                 }
                 tbody {
                     tr {
+                        &:first-child {
+                            display: none;
+                        }
                         &:last-child {
                             border-bottom: 0;
                         }
@@ -81,6 +84,11 @@
     }
 }
 
+.no-data {
+    color: #dc3545;
+    font: 15px $roboto;
+}
+
 .modal {
     z-index: 1299;
     backdrop-filter: blur(10px);
@@ -88,11 +96,34 @@
         .modal-content {
             .modal-header {
                 .modal-title {
-                    font: 30px $roboto;
+                    font: 25px $roboto;
+                }
+            }
+            .modal-body {
+                .form-control {
+                    font: 15px $roboto;
+                    margin-bottom: 10px;
+                    option {
+                        font: 15px $roboto;
+                    }
                 }
             }
             .modal-footer {
                 border-top: 1px dashed;
+                button {
+                    &:first-child {
+                        background-color: transparent;
+                        font: 15px $roboto;
+                        color: $font-black;
+                        border: none;
+                    }
+                    &:last-child {
+                        background-color: #2fdf84;
+                        font: 15px $roboto;
+                        border: none;
+                        color: #fff;
+                    }
+                }
             }
         }
     }
@@ -124,5 +155,55 @@
     }
     p {
         color: $font-white !important;
+    }
+}
+
+.todo-wrapper {
+    height: 100vh;
+    background-color: $yellow;
+    display: flex;
+    align-items: center;
+    input {
+        display: block;
+        padding: 10px;
+        width: 60%;
+        border-radius: 5px;
+        border: 0;
+        font: 15px $roboto;
+        &::placeholder {
+            font: 15px $roboto;
+        }
+    }
+    h1 {
+        font: 20px $roboto;
+        text-transform: capitalize;
+        padding-top: 10px;
+    }
+    button {
+        background-color: #28a745;
+        font: 15px $roboto;
+        margin-top: 10px;
+    }
+    .todo-list {
+        h1 {
+            background-color: $black-gradient;
+            color: $font-white;
+            margin-bottom: 0;
+            padding: 5px;
+        }
+        .task-list {
+            width: 50%;
+            border: 1px solid #000;
+            border-radius: 5px;
+            height: 250px;
+            overflow-y: auto;
+            ul {
+                li {
+                    font: 15px $roboto;
+                    text-transform: capitalize;
+                    padding: 10px 0 10px 10px;
+                }
+            }
+        }
     }
 }
