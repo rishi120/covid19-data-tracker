@@ -14,6 +14,7 @@ const Rendermastercomponent = () => {
   const [showError, setShowError] = useState(false);
   const [showSelectOptions, setShowSelectOptions] = useState(false);
   const [showStateNames, setShowStateNames] = useState({});
+  const [Andaman, setAndaman] = useState("");
   const [Andhra, setAndhra] = useState("");
   const [Arunachal, setArunachal] = useState("");
   const [Assam, setAssam] = useState("");
@@ -23,6 +24,11 @@ const Rendermastercomponent = () => {
   const [stateName, setStateName] = useState("");
   const [getTaskValue, setGetTaskValue] = useState("");
   const [getTaskValueOnClick, setGetTaskValueOnClick] = useState("");
+  const [getDistrictNames, setGetDistrictNames] = useState("");
+  const [activeData, setActiveData] = useState();
+  const [recoveredData, setRecoveredData] = useState();
+  const [confirmedData, setConfirmedData] = useState();
+  const [deathData, setDeathData] = useState();
   const RenderTableHeading = [
     {
       tableHeading: "State/UT",
@@ -63,12 +69,15 @@ const Rendermastercomponent = () => {
     Axios.get(baseUrl + "state_district_wise.json")
       .then((response) => {
         setShowStateNames(response.data);
+        const getAndamanDistrictData =
+          response.data["Andaman and Nicobar Islands"].districtData;
         const getAndhraPradeshDistrictData =
           response.data["Andhra Pradesh"].districtData;
         const getInnerDistrictData =
           response.data["Arunachal Pradesh"].districtData;
         const getAssamDistrictData = response.data["Assam"].districtData;
         const getBiharDistrictData = response.data["Bihar"].districtData;
+        setAndaman(getAndamanDistrictData);
         setAndhra(getAndhraPradeshDistrictData);
         setArunachal(getInnerDistrictData);
         setAssam(getAssamDistrictData);
@@ -121,33 +130,32 @@ const Rendermastercomponent = () => {
   const handleClose = () => {
     setModal(false);
     setShowSelectOptions(false);
+    setGetDistrictNames(false);
+    setActiveData(false);
+    setRecoveredData(false);
+    setConfirmedData(false);
+    setDeathData(false);
   };
-
-  // var runs = [1, 0, 2, 4, 3, 6, 0, 0, 0, 2, 6, 2, 6, 6, 6, 4, 1, 1];
-  // var firstOver = 0;
-  // var secondOver = 0;
-  // var thirdOver = 0;
-  // for (var i = 0; i <= 5; i++) {
-  //   var result = (firstOver += runs[i]);
-  // }
-  // for (var i = 6; i <= 11; i++) {
-  //   var result1 = (secondOver += runs[i]);
-  // }
-  // for (var i = 12; i <= 17; i++) {
-  //   var result2 = (thirdOver += runs[i]);
-  // }
-  // var findSum = result + result1 + result2;
-  // console.log("Total Score:", findSum);
 
   function handleStateChange(value) {
     const getSelectValue = value;
-    console.log(getSelectValue);
+    const getStateName = stateName;
+    setLoading(true);
     Axios.get(baseUrl + "state_district_wise.json")
       .then((response) => {
-        const getStateWiseInnerData = response.data["Assam"].districtData;
-        Object.values(getStateWiseInnerData).filter((innerData) => {
-          console.log(innerData);
+        const nameOfDistrict = response.data[`${getStateName}`].districtData;
+        Object.keys(nameOfDistrict).filter((districtNames) => {
+          if (districtNames === getSelectValue) {
+            setGetDistrictNames(districtNames);
+          }
         });
+        setLoading(false);
+        const getStateWiseInnerData =
+          response.data[`${getStateName}`].districtData[`${getSelectValue}`];
+        setActiveData(getStateWiseInnerData.active);
+        setRecoveredData(getStateWiseInnerData.recovered);
+        setConfirmedData(getStateWiseInnerData.confirmed);
+        setDeathData(getStateWiseInnerData.deceased);
       })
       .catch((error) => {
         console.log("Error");
@@ -176,6 +184,7 @@ const Rendermastercomponent = () => {
         showStateNames={showStateNames}
         handleSearch={handleSearch}
         handleStateChange={handleStateChange}
+        Andaman={Andaman}
         Andhra={Andhra}
         Arunachal={Arunachal}
         Assam={Assam}
@@ -184,6 +193,11 @@ const Rendermastercomponent = () => {
         stateName={stateName}
         handleModal={handleModal}
         handleClose={handleClose}
+        getDistrictNames={getDistrictNames}
+        activeData={activeData}
+        recoveredData={recoveredData}
+        confirmedData={confirmedData}
+        deathData={deathData}
       />
       <Renderimagegrid />
       <Renderthirdsection />

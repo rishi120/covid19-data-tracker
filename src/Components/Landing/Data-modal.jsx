@@ -35,16 +35,19 @@ const Rendermodal = (props) => {
         <Renderdata
           stateName={props.stateName}
           handleStateChange={props.handleStateChange}
+          Andaman={props.Andaman}
           Andhra={props.Andhra}
           Arunachal={props.Arunachal}
           Assam={props.Assam}
           Bihar={props.Bihar}
         />
         <Rendercoviddata
-        // confirmed={props.confirmed}
-        // active={props.active}
-        // recovered={props.recovered}
-        // deceased={props.deceased}
+          getDistrictNames={props.getDistrictNames}
+          activeData={props.activeData}
+          recoveredData={props.recoveredData}
+          confirmedData={props.confirmedData}
+          deathData={props.deathData}
+          loading={props.loading}
         />
       </Modal.Body>
       <Modal.Footer>

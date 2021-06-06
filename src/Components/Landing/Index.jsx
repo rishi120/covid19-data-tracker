@@ -15,14 +15,17 @@ const Renderlandingsection = (props) => {
         stateName={props.stateName}
         showStateNames={props.showStateNames}
         handleStateChange={props.handleStateChange}
+        Andaman={props.Andaman}
         Andhra={props.Andhra}
         Arunachal={props.Arunachal}
         Assam={props.Assam}
         Bihar={props.Bihar}
-        // confirmed={props.confirmed}
-        // active={props.active}
-        // recovered={props.recovered}
-        // deceased={props.deceased}
+        getDistrictNames={props.getDistrictNames}
+        activeData={props.activeData}
+        recoveredData={props.recoveredData}
+        confirmedData={props.confirmedData}
+        deathData={props.deathData}
+        loading={props.loading}
       />
       <div className="wrap-section">
         <Container className="no-pad">
@@ -75,7 +78,11 @@ const Renderlandingsection = (props) => {
                       <td key={uuidv4()}>{getStateWiseData.active}</td>
                       <td key={uuidv4()}>{getStateWiseData.recovered}</td>
                       <td key={uuidv4()}>{getStateWiseData.deaths}</td>
-                      <td key={uuidv4()}>{getStateWiseData.lastupdatedtime}</td>
+                      <td key={uuidv4()}>
+                        {Moment(getStateWiseData.lastupdatedtime).format(
+                          "DD-MMM-YYYY HH:mm"
+                        )}
+                      </td>
                     </tr>
                   );
                 })}
