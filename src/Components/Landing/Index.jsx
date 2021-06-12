@@ -78,11 +78,7 @@ const Renderlandingsection = (props) => {
                       <td key={uuidv4()}>{getStateWiseData.active}</td>
                       <td key={uuidv4()}>{getStateWiseData.recovered}</td>
                       <td key={uuidv4()}>{getStateWiseData.deaths}</td>
-                      <td key={uuidv4()}>
-                        {Moment(getStateWiseData.lastupdatedtime).format(
-                          "DD-MMM-YYYY HH:mm"
-                        )}
-                      </td>
+                      <td key={uuidv4()}>{getStateWiseData.lastupdatedtime}</td>
                     </tr>
                   );
                 })}

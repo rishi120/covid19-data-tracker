@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Renderthirdsection from "./Components/Landing/Third-section";
 import Axios from "axios";
 import { baseUrl } from "./Components/Landing/Utils/Baseurl";
+import { countryWiseUrl } from "./Components/Landing/Utils/Baseurl";
 import { Rendertodolist } from "./Components/Landing/Fourth-section";
 
 const Rendermastercomponent = () => {
@@ -29,6 +30,12 @@ const Rendermastercomponent = () => {
   const [recoveredData, setRecoveredData] = useState();
   const [confirmedData, setConfirmedData] = useState();
   const [deathData, setDeathData] = useState();
+  const [countries, setCountries] = useState([]);
+  const [getConfirmedCases, setGetConfirmedCases] = useState(0);
+  const [getActiveCases, setGetActiveCases] = useState(0);
+  const [getRecoveredCases, setGetRecoveredCases] = useState(0);
+  const [getDeathCases, setGetDeathCases] = useState(0);
+  const [countryName, setCountryName] = useState("");
   const RenderTableHeading = [
     {
       tableHeading: "State/UT",
@@ -85,6 +92,14 @@ const Rendermastercomponent = () => {
       })
       .catch((error) => {
         console.log("Error");
+      });
+
+    Axios.get(countryWiseUrl + "countries?yesterday=&sort=")
+      .then((response) => {
+        setCountries(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
     const ST = ScrollTrigger;
     const targetPanels = ".panel";
@@ -172,6 +187,24 @@ const Rendermastercomponent = () => {
     // });
     setGetTaskValueOnClick(getTaskValue);
   }
+  function handleCountries(getCountriesName) {
+    Axios.get(countryWiseUrl + "countries?yesterday=&sort=")
+      .then((response) => {
+        response.data.map((getFilteredCountryData) => {
+          if (getFilteredCountryData.country == getCountriesName) {
+            setCountryName(getCountriesName);
+            setGetConfirmedCases(getFilteredCountryData.cases);
+            setGetActiveCases(getFilteredCountryData.active);
+            setGetRecoveredCases(getFilteredCountryData.recovered);
+            setGetDeathCases(getFilteredCountryData.deaths);
+          }
+          return null;
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <>
@@ -199,7 +232,15 @@ const Rendermastercomponent = () => {
         confirmedData={confirmedData}
         deathData={deathData}
       />
-      <Renderimagegrid />
+      <Renderimagegrid
+        countries={countries}
+        handleCountries={handleCountries}
+        getConfirmedCases={getConfirmedCases}
+        getActiveCases={getActiveCases}
+        getRecoveredCases={getRecoveredCases}
+        getDeathCases={getDeathCases}
+        countryName={countryName}
+      />
       <Renderthirdsection />
       <Rendertodolist
         handleTaskValue={handleTaskValue}

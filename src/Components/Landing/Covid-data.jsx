@@ -2,6 +2,7 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+// import { PieChart } from "react-minimal-pie-chart";
 
 const Rendercoviddata = (props) => {
   const covidData = [
@@ -26,10 +27,16 @@ const Rendercoviddata = (props) => {
       textColorClass: "death",
     },
   ];
+  // const pieChartData = [
+  //   { districtData: props.confirmedData, value: 10, color: "#dc3545" },
+  //   { districtData: props.activeData, value: 15, color: "#007bff" },
+  //   { districtData: props.recoveredData, value: 20, color: "#28a745" },
+  //   { districtData: props.deathData, value: 20, color: "#6c757d" },
+  // ];
   return (
     <section className="data-wrapper">
-      {props.getDistrictNames === "Kamrup Metropolitan" ? (
-        <h1>Guwahati</h1>
+      {props.getDistrictNames == "Kamrup Metropolitan" ? (
+        <h1>{props.getDistrictNames} (Guwahati)</h1>
       ) : (
         <h1>{props.getDistrictNames}</h1>
       )}
@@ -54,6 +61,10 @@ const Rendercoviddata = (props) => {
             );
           })}
         </Row>
+        {/* <PieChart
+          data={pieChartData}
+          segmentsStyle={{ transition: "stroke .3s", cursor: "pointer" }}
+        /> */}
       </Container>
     </section>
   );

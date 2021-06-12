@@ -9660,7 +9660,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@*", "react-dom@^17.0.2", "react-dom@>=16.3.0", "react-dom@>=16.6.0", "react-dom@>=16.8.0":
+"react-dom@*", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^17.0.2", "react-dom@>=16.3.0", "react-dom@>=16.6.0", "react-dom@>=16.8.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -9688,6 +9688,11 @@
   "integrity" "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
   "resolved" "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
   "version" "3.0.4"
+
+"react-minimal-pie-chart@^8.2.0":
+  "integrity" "sha512-RhrHzprJt3KfBe4L3sE0Ha6fj4kYcwQtesQgscnld9Umf64+nZnxxInycnbimKsbIjxJONv77JIZp+qRbJD+bA=="
+  "resolved" "https://registry.npmjs.org/react-minimal-pie-chart/-/react-minimal-pie-chart-8.2.0.tgz"
+  "version" "8.2.0"
 
 "react-overlays@^5.0.0":
   "integrity" "sha512-plwUJieTBbLSrgvQ4OkkbTD/deXgxiJdNuKzo6n1RWE3OVnQIU5hffCGS/nvIuu6LpXFs2majbzaXY8rcUVdWA=="
@@ -9784,7 +9789,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^17.0.2", "react@>= 16", "react@>=0.14.0", "react@>=15.0.0", "react@>=16.3.0", "react@>=16.3.2", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
+"react@*", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@>= 16", "react@>=0.14.0", "react@>=15.0.0", "react@>=16.3.0", "react@>=16.3.2", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

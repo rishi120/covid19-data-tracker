@@ -138,6 +138,11 @@
                             color: #6c757d;
                         }
                     }
+                    svg {
+                        width: 200px;
+                        display: block;
+                        margin: auto;
+                    }
                 }
             }
             .modal-footer {
@@ -163,14 +168,83 @@
 
 .image-grid {
     height: 100vh !important;
-    background-color: $teal;
+    background-color: $black-gradient;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    .img-wrapper {
-        img {
-            height: 400px;
-            @include border-radius(5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    h1 {
+        font: 35px $roboto;
+        color: $font-white;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    .select-countries-heading {
+        width: 300px;
+        font-size: 15px;
+        background: #fff;
+        color: #000;
+        padding: 15px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #dedede;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .countries-wrapper {
+        width: 300px;
+        height: 300px;
+        overflow-y: scroll;
+        ul {
+            list-style-type: none;
+            background-color: $font-white;
+            margin-bottom: 0;
+            li {
+                font: 15px $roboto;
+                color: $font-black;
+                cursor: pointer;
+                border-bottom: 1px solid #dedede;
+                margin-bottom: 10px;
+                padding: 10px;
+                img {
+                    width: 20px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+    .data-wrapper {
+        background-color: $font-white;
+        @include border-radius(5px);
+        padding: 10px;
+        h1 {
+            color: #372d72;
+            font: 20px $roboto;
+            padding-bottom: 5px;
+        }
+        .inner-data-wrapper {
+            border: 1px solid #dedede;
+            padding: 10px;
+            margin-bottom: 10px;
+            h1 {
+                font: 25px $roboto !important;
+                color: $black-gradient;
+                text-align: center;
+                margin-bottom: 0;
+                border-bottom: 0;
+                padding-bottom: 10px;
+            }
+            .confirmedCase {
+                color: #dc3545;
+            }
+            .activeCase {
+                color: #007bff;
+            }
+            .recoveredCase {
+                color: #28a745;
+            }
+            .deathCase {
+                color: #6c757d;
+            }
         }
     }
 }
@@ -179,7 +253,7 @@
     @extend .landing-section;
     display: flex;
     align-items: center;
-    background-color: $black-gradient !important;
+    background-color: $teal !important;
     h1 {
         font-size: 200px !important;
         height: 200px;
