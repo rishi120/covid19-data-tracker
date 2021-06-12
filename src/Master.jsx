@@ -188,8 +188,10 @@ const Rendermastercomponent = () => {
     setGetTaskValueOnClick(getTaskValue);
   }
   function handleCountries(getCountriesName) {
+    setLoading(true);
     Axios.get(countryWiseUrl + "countries?yesterday=&sort=")
       .then((response) => {
+        setLoading(false);
         response.data.map((getFilteredCountryData) => {
           if (getFilteredCountryData.country == getCountriesName) {
             setCountryName(getCountriesName);
@@ -240,6 +242,7 @@ const Rendermastercomponent = () => {
         getRecoveredCases={getRecoveredCases}
         getDeathCases={getDeathCases}
         countryName={countryName}
+        loading={loading}
       />
       <Renderthirdsection />
       <Rendertodolist

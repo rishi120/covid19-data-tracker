@@ -92,6 +92,9 @@ const Renderimagegrid = (props) => {
                         >
                           {getCovidCases.status}
                         </h1>
+                        {props.loading && (
+                          <h1 className="loading-data">Loading...</h1>
+                        )}
                         <h1
                           key={getCovidCases.cases}
                           className={getCovidCases.color}

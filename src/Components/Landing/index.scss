@@ -225,6 +225,9 @@
             border: 1px solid #dedede;
             padding: 10px;
             margin-bottom: 10px;
+            .loading-data {
+                font: 15px $roboto !important;
+            }
             h1 {
                 font: 25px $roboto !important;
                 color: $black-gradient;
