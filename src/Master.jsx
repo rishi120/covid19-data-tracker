@@ -125,13 +125,15 @@ const Rendermastercomponent = () => {
 
   const handleSearch = (e) => {
     const searchTerm = e.toLowerCase();
+    let resultoFFilteredArray = [];
     Axios.get(baseUrl + "data.json")
       .then((response) => {
-        response.data.statewise.filter((getFilteredData) => {
-          if (getFilteredData.state.toLowerCase().includes(searchTerm)) {
-            return console.log(getFilteredData);
+        resultoFFilteredArray = response.data.statewise.filter(
+          (getFilteredData) => {
+            return getFilteredData.state.toLowerCase().includes(searchTerm);
           }
-        });
+        );
+        setGetCovidData(resultoFFilteredArray);
       })
       .catch(function () {
         console.log("error");
@@ -208,6 +210,23 @@ const Rendermastercomponent = () => {
       });
   }
 
+  function handleCountrySearch(getCountryNames) {
+    const setGetCountryName = getCountryNames.toLowerCase();
+    let result = [];
+    Axios.get(countryWiseUrl + "countries?yesterday=&sort=")
+      .then((response) => {
+        result = response.data.filter((getFilteredCountryNames) => {
+          return getFilteredCountryNames.country
+            .toLowerCase()
+            .includes(setGetCountryName);
+        });
+        setCountries(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       <Renderlandingsection
@@ -243,6 +262,7 @@ const Rendermastercomponent = () => {
         getDeathCases={getDeathCases}
         countryName={countryName}
         loading={loading}
+        handleCountrySearch={handleCountrySearch}
       />
       <Renderthirdsection />
       <Rendertodolist

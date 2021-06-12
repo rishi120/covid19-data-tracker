@@ -190,14 +190,28 @@
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     }
+    input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        font: 15px $roboto;
+        &:focus {
+            outline: 0;
+        }
+        &::placeholder {
+            font: 15px $roboto;
+        }
+    }
     .countries-wrapper {
         width: 300px;
         height: 300px;
         overflow-y: scroll;
+        background-color: $font-white;
         ul {
             list-style-type: none;
-            background-color: $font-white;
             margin-bottom: 0;
+            height: 100%;
             li {
                 font: 15px $roboto;
                 color: $font-black;

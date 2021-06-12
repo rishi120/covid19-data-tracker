@@ -57,6 +57,11 @@ const Renderimagegrid = (props) => {
             <h1 className="select-countries-heading">
               Select Country to view covid data
             </h1>
+            <input
+              type="text"
+              placeholder="Search Country..."
+              onChange={(e) => props.handleCountrySearch(e.target.value)}
+            />
             <div className="countries-wrapper">
               <ul>
                 {props.countries.map((getAllCountries) => {
